@@ -9,6 +9,7 @@ class Player(Item):
         super().__init__(name, description)
     def change_location(self, new_location):
         self.location = new_location
+        return self.location.enter()
     def __repr__(self):
         return "Current Location: {}".format(self.location)
     def __str__(self):

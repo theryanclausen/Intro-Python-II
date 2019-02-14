@@ -42,7 +42,7 @@ room['treasure'].s_to = room['narrow']
 derf = Player('Derf Flexman', 'a Professional wrestler turned crime fighting vigilante', room['outside'])
 
 derf.add(belt)
-#derf.check_inventory()
+
 # Write a loop that:
 #
 # * Prints the current room name
@@ -60,7 +60,16 @@ while True:
     if inp == 'q':
         break
     if inp == 'com':
-        print('\nCommands: \n"n", "e", "s", "w" to move. \n"look" to search room. \n"q" to quit.\n')
+        print('\nCommands: \n"n", "e", "s", "w" to move. \n"look" to search room.\n"m" for more commands \n"q" to quit.\n')
+    if inp == 'm':
+        print('\nMore Commands: \n"inv" to check inventory')
     if inp == 'look':
         print(f'\n{derf.location.check()}\n')
-    
+    if inp == 'inv':
+        print(f'\n{derf.check_inventory()}\n')
+    if inp == 'n' or inp == 'e' or inp == 's' or inp == 'w':
+        next_room = derf.location.get_next_room(inp)
+        if next_room == None:
+            print("\nYou can't go that way\n")
+        else:
+            print(f'\n{derf.change_location(next_room)}\n')
