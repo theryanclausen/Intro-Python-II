@@ -23,4 +23,4 @@ class Player(Item):
             i += x.name
         return i
     def check_inventory(self):
-        print(f'{self.name} has {self.unpack()}')
+        return f'{self.name} has {self.unpack()}'

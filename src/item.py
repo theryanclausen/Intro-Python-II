@@ -4,4 +4,4 @@ class Item:
         self.name = name
         self.description = description
     def inspect(self):
-        print(f"{self.name} is {self.description}")
+        return f"{self.name} is {self.description}"

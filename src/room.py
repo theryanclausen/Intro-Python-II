@@ -13,14 +13,30 @@ class Room(Item):
         self.list = []
         super().__init__(name, description)
     def enter(self):
-        print(f'You enter the {self.name}. {self.description}') 
+        return f'You enter the {self.name}. {self.description}'
     def unpack(self):
-        return ', '.join(self.list)
+        i = ''
+        for x in self.list:
+            i += x.name
+        if i == '':
+            i = 'nothing'
+        return i
     def check(self):
-        print(f'Searching the {self.name}, you find {self.unpack()}')
+        return f'Searching the {self.name}, you find {self.unpack()}'
     def add(self, item):
         self.list.append(item)
     def remove(self, item):
         self.list.remove(item)
+    def get_next_room(self, direction):
+        if direction == 'n':
+            return self.n_to
+        elif direction == 'e':
+            return self.e_to
+        elif direction == 'w':
+            return self.w_to
+        elif direction == 's':
+            return self.s_to
+        else:
+            return None
 
 

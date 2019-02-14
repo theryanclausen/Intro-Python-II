@@ -2,9 +2,9 @@ from room import Room
 from player import Player
 from item import Item
 
-belt = Item('Championship Belt', "Wrestling's top prize")
+belt = Item('Championship', "Wrestling's top prize")
 
-# Declare all the rooms
+# Declare all the rooms 
 
 room = {
     'outside':  Room("Outside Cave Entrance",
@@ -39,10 +39,10 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-derf = Player('Derf Flexman', 'Professional wrestler turned crime fighting vigilante', room['outside'])
+derf = Player('Derf Flexman', 'a Professional wrestler turned crime fighting vigilante', room['outside'])
 
 derf.add(belt)
-derf.check_inventory()
+#derf.check_inventory()
 # Write a loop that:
 #
 # * Prints the current room name
@@ -53,3 +53,14 @@ derf.check_inventory()
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+print(f'\nYou are {derf.name}. {derf.inspect()} \n    {derf.location.enter()}\n')
+while True:
+    print('Enter "com" for list of commands.')
+    inp = input("What now? ")
+    if inp == 'q':
+        break
+    if inp == 'com':
+        print('\nCommands: \n"n", "e", "s", "w" to move. \n"look" to search room. \n"q" to quit.\n')
+    if inp == 'look':
+        print(f'\n{derf.location.check()}\n')
+    
