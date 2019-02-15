@@ -2,7 +2,8 @@ from room import Room
 from player import Player
 from item import Item
 
-belt = Item('Championship', "Wrestling's top prize")
+belt = Item('championship', "Wrestling's top prize")
+chair =Item('chair', "Steel folding chair. Derf's weapon of choice")
 
 # Declare all the rooms 
 
@@ -42,7 +43,7 @@ room['treasure'].s_to = room['narrow']
 derf = Player('Derf Flexman', 'a Professional wrestler turned crime fighting vigilante', room['outside'])
 
 derf.add(belt)
-
+room['foyer'].add(chair)
 # Write a loop that:
 #
 # * Prints the current room name
@@ -57,6 +58,11 @@ print(f'\nYou are {derf.name}. {derf.inspect()} \n    {derf.location.enter()}\n'
 while True:
     print('Enter "com" for list of commands.')
     inp = input("What now? ")
+    if inp.__contains__(' '):
+        verb_noun = inp.split(' ')
+        if verb_noun[0] == 'drop':
+            print(f'\n {derf.drop(verb_noun[1])}\n')
+            
     if inp == 'q':
         break
     if inp == 'com':
